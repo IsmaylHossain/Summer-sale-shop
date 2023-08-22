@@ -1,6 +1,6 @@
 let total = 0;
 let discount = 0;
-let totalMomey = 0;
+var totalMomey = 0;
 
 function itemClick(text , money){
 
@@ -9,16 +9,45 @@ function itemClick(text , money){
     const itemName = text; 
     const li = document.createElement("li");
     li.innerText = itemName;
+    li.type = "1";
     selectedItemContainer.appendChild(li);
     
     total += money;
     document.getElementById("tmoney").innerText= total;
-    if(total >= 200){
-        discount = (20 / 100) *total;
-    }
     totalMoney = total- discount;
     document.getElementById("totalmoney").innerText= totalMoney;
-    document.getElementById("discount").innerText= discount;
+    let inputValue = document.getElementById("input");
+    let button = document.getElementById("button");
+    if(total >= 200){
+        button.removeAttribute("disabled");
+    }else{
+        button.setAttribute("disabled","true");
+    }
+    let button2 = document.getElementById("button2");
+    if(total > 0){
+        button2.removeAttribute("disabled");
+    }else{
+        button2.setAttribute("disabled","true");
+    }
+    button=document.getElementById("button");
+    button.addEventListener("click", function(){
+        const value = inputValue.value.trim();
+
+        if(value === "SELL200"){
+            discount = (20 / 100) *total;
+            totalMoney = total- discount;
+            document.getElementById("totalmoney").innerText= totalMoney;
+           
+        }else{
+            discount= 0;
+        }
+        discount.toFixed(2);
+        document.getElementById("discount").innerText= discount;
+        
+    });
+
+    
+    
 
     
     
