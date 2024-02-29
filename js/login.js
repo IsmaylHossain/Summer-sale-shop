@@ -1,6 +1,6 @@
 let total = 0;
 let discount = 0;
-var totalMomey = 0;
+var totalMoney = 0;
 
 function itemClick(text , money){
 
